@@ -1,28 +1,21 @@
 ﻿using ByteBank.Contas;
 using ByteBank.Titular;
 
-ContaCorrente contaAndre = new ContaCorrente();
-contaAndre.Titular = new Cliente();
-contaAndre.Titular.Nome = "André Silva";
-contaAndre.Titular.Cpf = "111.111.111-11";
+ContaCorrente contaAndre = new ContaCorrente("1010-X", 15);
+contaAndre.Titular = new Cliente("André Silva", "111.111.111-11");
 contaAndre.Titular.Profissao = "Desenvolvedor";
-contaAndre.NumConta = "1010-X";
-contaAndre.NumAgencia = 15;
 contaAndre.Saldo = 100;
 
-ContaCorrente contaMaria = new ContaCorrente();
-contaMaria.Titular = new Cliente();
-contaMaria.Titular.Nome = "Maria Souza";
-contaMaria.Titular.Cpf = "222.222.222-22";
+ContaCorrente contaMaria = new ContaCorrente("1010-5", 17);
+contaMaria.Titular = new Cliente("Maria Souza", "222.222.222-22");
 contaMaria.Titular.Profissao = "Desenvolvedora";
-contaMaria.NumConta = "1010-5";
-contaMaria.NumAgencia = 17;
 contaMaria.Saldo = 350;
 
 Console.WriteLine("O saldo da conta do " + contaAndre.Titular.Nome + " é: R$" + contaAndre.Saldo + "\n");
 
 Console.WriteLine("O saldo da conta do " + contaMaria.Titular.Nome + " é: R$" + contaMaria.Saldo + "\n");
 
+//TRANSFERENCIA
 if (contaAndre.Transferir(50, contaMaria) == true)
 {
     Console.WriteLine("Transferência realizada com sucesso!\n");
@@ -37,11 +30,12 @@ Console.WriteLine("O saldo da conta do " + contaAndre.Titular.Nome + " é: R$" +
 Console.WriteLine("O saldo da conta do " + contaMaria.Titular.Nome + " é: R$" + contaMaria.Saldo + "\n");
 
 
+//DEPOSITO
 contaAndre.Depositar(100);
 Console.WriteLine("O saldo da conta do " + contaAndre.Titular.Nome + " após o depósito é: R$" + contaAndre.Saldo + "\n");
 
 
-
+//SAQUE
 if (contaAndre.Sacar(150) == true)
 {
     Console.WriteLine("Saque realizado com sucesso!");
@@ -52,9 +46,12 @@ else
     Console.WriteLine("Saldo insuficiente para realizar o saque!");
 }
 
+
+//TESTANDO VALIDAÇÃO DE SALDO NEGATIVO
 contaAndre.Saldo = -10;
 Console.WriteLine("O saldo da conta do " + contaAndre.Titular.Nome + " é: R$" + contaAndre.Saldo + "\n");
 
-
+//RETORNANDO O TOTAL DE CONTAS CRIADAS
+Console.WriteLine("O total de contas criadas é: "+ ContaCorrente.TotalContasCriadas + "\n");
 
 Console.ReadLine();

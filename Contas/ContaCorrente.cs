@@ -10,14 +10,23 @@ namespace ByteBank.Contas
 {
     public class ContaCorrente
     {
-        public string NumConta { get; set; }
+        public static int TotalContasCriadas { get; private set; }
+
+        public ContaCorrente(string num_conta, int num_agencia)
+        {
+            this.NumConta = num_conta;
+            this.NumAgencia = num_agencia;
+            TotalContasCriadas++;
+        }
+
+        public string NumConta { get; private set; }
         public Cliente Titular { get; set; }
 
         private int _numAgencia;
         public int NumAgencia
         {
             get { return this._numAgencia; }
-            set {
+            private set {
                 if (value > 0){
                     this._numAgencia = value;
                 }
