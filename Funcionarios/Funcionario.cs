@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ByteBank.Funcionarios
 {
-    internal abstract class Funcionario
+    public abstract class Funcionario
     {
         public string Nome { get; private set; }
         public string Cpf { get; private set; }

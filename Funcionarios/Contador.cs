@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ByteBank.Sistema;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace ByteBank.Funcionarios
 {
-    internal class Contador:Funcionario
+    internal class Contador:Login 
     {
         //Construtor
-        public Contador(string nome, string cpf, double salario) : base(nome, cpf, salario)
+        public Contador(string nome, string cpf, double salario, string usuario, string senha) : base(nome, cpf, salario, usuario, senha)
         {
 
         }
