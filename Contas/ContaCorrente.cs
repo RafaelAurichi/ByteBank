@@ -27,7 +27,12 @@ namespace ByteBank.Contas
         {
             get { return this._numAgencia; }
             private set {
-                if (value > 0){
+                if (value < 0)
+                {
+                    Console.WriteLine("Error: Não é possível definir um valor negativo para o campo 'conta'.");
+                }
+                else
+                {
                     this._numAgencia = value;
                 }
             }
@@ -41,7 +46,7 @@ namespace ByteBank.Contas
             {
                 if (value < 0)
                 {
-                    Console.WriteLine("Error: Não é possível definir um valor negativo para o campo saldo.");
+                    Console.WriteLine("Error: Não é possível definir um valor negativo para o campo 'saldo'.");
                 }
                 else
                 {
