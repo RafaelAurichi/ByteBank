@@ -1,5 +1,6 @@
 ﻿using ByteBank.Contas;
 using ByteBank.Funcionarios;
+using ByteBank.Parceiros;
 using ByteBank.Sistema;
 using ByteBank.Titular;
 using ByteBank.Utilitarios;
@@ -71,20 +72,25 @@ Auxiliar auxiliar = new Auxiliar("Pedro Orochi", "333.333.333-33", 1200);
 
 Contador contador = new Contador("Barack Obama", "44.44.44-44", 3000, "contador@bytebank.com", "123");
 
+ParceiroComercial parceiro = new ParceiroComercial("Auditoria Silva", 0145, "auditoria@silva.com.br", "0145");
+
 Console.WriteLine("O salário do(a) " + designer.Nome + " é: " + designer.Salario);
 Console.WriteLine("O salário do(a) " + diretor.Nome + " é: " + diretor.Salario);
 Console.WriteLine("O salário do(a) " + auxiliar.Nome + " é: " + auxiliar.Salario);
-Console.WriteLine("O salário do(a) " + contador.Nome + " é: " + contador.Salario + "\n");
+Console.WriteLine("O salário do(a) " + contador.Nome + " é: " + contador.Salario);
+Console.WriteLine("O ID do(a) " + parceiro.Nome + " é: " + parceiro.Id + "\n");
 
 ////Total Funcionarios
 Console.WriteLine("O total de funcionários é: " + Funcionario.TotalFuncionarios + "\n");
 
 //Auntenticacao senha
-Login();
-void Login()
+AutenticarLogin();
+void AutenticarLogin()
 {
-    diretor.Autenticar("diretor@bytebank.com", "111"); //infos certas
-    contador.Autenticar("contador@bytebank", "123"); //infos erradas
+    SistemaInterno login = new SistemaInterno();
+    login.LoginAutenticar(diretor, "diretor@bytebank.com", "111"); //infos certas
+    login.LoginAutenticar(contador, "contador@bytebank", "123"); //infos erradas
+    login.LoginAutenticar(parceiro, "auditoria@silva.com.br", "0145"); //infos certas
 
     Console.WriteLine();
 }
@@ -128,7 +134,6 @@ void Login()
 
 //    Console.WriteLine("Total De bonificações: " + gerenciador.TotalBonificacoes + "\n");
 //}
-*/
 #endregion
-
+*/
 Console.ReadLine();

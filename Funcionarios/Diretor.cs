@@ -1,5 +1,4 @@
-﻿using ByteBank.Sistema;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace ByteBank.Funcionarios
 {
-    internal class Diretor:Login
+    internal class Diretor:FuncionarioLogavel
     {
         //Construtor
-        public Diretor(string nome, string cpf, double salario, string usuario, string senha) : base(nome, cpf, salario, usuario, senha)
+        public Diretor(string nome, string cpf, double salario, string usuario, string senha) : base (nome, cpf, salario, usuario, senha)
         {
 
         }
