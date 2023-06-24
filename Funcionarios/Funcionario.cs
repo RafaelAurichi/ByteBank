@@ -25,7 +25,7 @@ namespace ByteBank.Funcionarios
         }
 
         //Metodos
-        public virtual double Bonificar() => this.Salario = this.Salario + (this.Salario * 0.10);
+        public virtual double Bonificar() => this.Salario += this.Salario * 0.10;
         public virtual double GetBonificacao() => this.Salario * 0.10;
         public abstract double AumentarSalario();        
     }

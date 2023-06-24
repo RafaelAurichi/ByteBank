@@ -6,12 +6,17 @@ using System.Threading.Tasks;
 
 namespace ByteBank.Titular
 {
-    public class Cliente
+    public class Cliente : IDisposable
     {
         public Cliente(string nome, string cpf)
         {
-            this.Nome = nome;
-            this.Cpf = cpf;
+            Nome = nome;
+            Cpf = cpf;
+        }
+
+        public void Dispose()
+        {
+            Console.WriteLine("fechou!");
         }
 
         public string Nome { get; private set; }

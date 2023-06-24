@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using ByteBank.Exceptions;
 
 namespace ByteBank.Contas
 {
@@ -12,10 +13,11 @@ namespace ByteBank.Contas
     {
         public static int TotalContasCriadas { get; private set; }
 
-        public ContaCorrente(string num_conta, int num_agencia)
-        {
-            this.NumConta = num_conta;
-            this.NumAgencia = num_agencia;
+        public ContaCorrente(string numConta, int numAgencia, Cliente titular)
+        { 
+            Titular = titular;
+            NumConta = numConta;
+            NumAgencia = numAgencia;
             TotalContasCriadas++;
         }
 
@@ -25,15 +27,17 @@ namespace ByteBank.Contas
         private int _numAgencia;
         public int NumAgencia
         {
-            get { return this._numAgencia; }
+            get { return _numAgencia; }
+
             private set {
-                if (value < 0)
+                if (value <= 0)
                 {
-                    Console.WriteLine("Error: Não é possível definir um valor negativo para o campo 'conta'.");
+                    //throw new ArgumentException("Agência número 0 não existe.");
+                    throw new NumAgenciaInvalidoException("Não existem agências com o número 0 ou menor.");
                 }
                 else
                 {
-                    this._numAgencia = value;
+                    _numAgencia = value;
                 }
             }
         }
@@ -41,7 +45,8 @@ namespace ByteBank.Contas
         private double _saldo;
         public double Saldo
         {
-            get { return this._saldo; }
+            get { return _saldo; }
+
             set
             {
                 if (value < 0)

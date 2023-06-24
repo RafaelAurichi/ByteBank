@@ -1,19 +1,22 @@
-﻿using ByteBank.Contas;
+﻿using ByteBank;
+using ByteBank.Contas;
+using ByteBank.Exceptions;
 using ByteBank.Funcionarios;
 using ByteBank.Parceiros;
 using ByteBank.Sistema;
 using ByteBank.Titular;
 using ByteBank.Utilitarios;
 
+
 #region TESTANDO CONTAS
 /*
-ContaCorrente contaAndre = new ContaCorrente("1010-X", 15);
-contaAndre.Titular = new Cliente("André Silva", "111.111.111-11");
+Cliente andre = new Cliente("André Silva", "111.111.111-11");
+ContaCorrente contaAndre = new ContaCorrente("1010-X", 15, andre);
 contaAndre.Titular.Profissao = "Desenvolvedor";
 contaAndre.Saldo = 100;
 
-ContaCorrente contaMaria = new ContaCorrente("1010-5", 17);
-contaMaria.Titular = new Cliente("Maria Souza", "222.222.222-22");
+Cliente maria = new Cliente("Maria Souza", "222.222.222-22");
+ContaCorrente contaMaria = new ContaCorrente("1010-5", 17, maria);
 contaMaria.Titular.Profissao = "Desenvolvedora";
 contaMaria.Saldo = 350;
 
@@ -59,6 +62,47 @@ Console.WriteLine("O saldo da conta do " + contaAndre.Titular.Nome + " é: R$" +
 
 //RETORNANDO O TOTAL DE CONTAS CRIADAS
 Console.WriteLine("O total de contas criadas é: "+ ContaCorrente.TotalContasCriadas + "\n");
+*/
+#endregion
+
+#region TESTANDO EXCEPTIONS
+//EXCEPTION 'NUM CONTA'
+/*
+//try - finally
+try
+{
+    Cliente manu = new Cliente("Manoela Albuquerque", "333.333.333-33");
+    ContaCorrente contaManu = new ContaCorrente("1010-X", 0, manu);
+}
+catch (NumAgenciaInvalidoException ex)
+{
+    Console.WriteLine(ex.Message);
+    Console.WriteLine(ex.StackTrace);
+}
+catch (ArgumentException ex)
+{
+    Console.WriteLine(ex.Message);
+    Console.WriteLine();
+}
+finally
+{
+    Console.WriteLine("Sessão Encerrada");
+}
+
+//using
+using (Cliente manu = new Cliente("Manoela Albuquerque", "333.333.333-33"))
+{
+    try
+    {
+        ContaCorrente contaManu = new ContaCorrente("1010-X", 0, manu);
+        Console.WriteLine(manu.Cpf);
+    }
+    catch (NumAgenciaInvalidoException ex)
+    {
+        Console.WriteLine(ex.Message);
+        Console.WriteLine(ex.StackTrace);
+    }
+}
 */
 #endregion
 
@@ -134,6 +178,7 @@ void AutenticarLogin()
 
 //    Console.WriteLine("Total De bonificações: " + gerenciador.TotalBonificacoes + "\n");
 //}
-#endregion
 */
+#endregion
+
 Console.ReadLine();
